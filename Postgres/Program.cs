@@ -1,6 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Postgres.Configuration;
 
-app.MapGet("/", () => "Hello World!");
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+#region Services
+builder.Services.AddDependencyInjectionConfig();
+builder.Services.AddControllers();
+builder.Services.AddSwaggerConfig();
+#endregion
 
+WebApplication app = builder.Build();
+#region Middleware
+app.UseSwaggerConfig();
+#endregion
+
+app.MapControllers();
 app.Run();
