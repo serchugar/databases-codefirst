@@ -26,5 +26,11 @@ public class TeamConfiguration : IEntityTypeConfiguration<Team>
         
         // AutoInclude Nav property 'Players' in the LINQ consults to an IQueryable
         builder.Navigation(t => t.Players).AutoInclude();
+        
+        builder.OwnsOne(c => c.AuditInfo, auditInfo =>
+        {
+            auditInfo.Property(ai => ai.CreatedAt);
+            auditInfo.Property(ai => ai.UpdatedAt);
+        });
     }
 }

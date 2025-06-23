@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Shared.ValueObjects;
 
 namespace Shared.Entities;
 
@@ -15,6 +16,9 @@ public class Team
     [Column("country_id"), Required]
     public int CountryId { get; set; }
     
+    
+    // Owned tables
+    public AuditInfo AuditInfo { get; set; } = new();
     
     // Nav props
     public virtual ICollection<Player> Players { get; set; } = new List<Player>();

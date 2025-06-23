@@ -24,5 +24,11 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
 
         builder.Navigation(c => c.Players);
         builder.Navigation(c => c.Teams);
+        
+        builder.OwnsOne(c => c.AuditInfo, auditInfo =>
+        {
+            auditInfo.Property(ai => ai.CreatedAt);
+            auditInfo.Property(ai => ai.UpdatedAt);
+        });
     }
 }
