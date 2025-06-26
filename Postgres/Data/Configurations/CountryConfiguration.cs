@@ -22,8 +22,8 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
             .HasForeignKey(t => t.CountryId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Navigation(c => c.Players);
-        builder.Navigation(c => c.Teams);
+        builder.Navigation(c => c.Players).AutoInclude();
+        builder.Navigation(c => c.Teams).AutoInclude();
         
         builder.OwnsOne(c => c.AuditInfo, auditInfo =>
         {
