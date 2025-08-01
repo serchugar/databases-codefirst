@@ -11,8 +11,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Tournament> Tournaments { get; set; }
     // DbSet<TeamTournament> is optional. Only should be added if needed to do queries or CRUD operations directly to this table
     
+    public DbSet<User> Users { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
 }
