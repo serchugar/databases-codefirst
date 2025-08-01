@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Shared.ValueObjects;
 
 namespace Shared.Entities.Joins;
 
 [Table("team_tournaments", Schema = "code_first")]
+// The composite key must be defined in the ModelBuilder
 public class TeamTournament
 {
-    [Column("team_id"), Key]
+    [Column("team_id")]
     public int TeamId { get; set; }
     
-    [Column("tournament_id"), Key]
+    [Column("tournament_id")]
     public int TournamentId { get; set; }
 
     // Owned tables

@@ -8,6 +8,9 @@ public class TeamTournamentConfiguration : IEntityTypeConfiguration<TeamTourname
 {
     public void Configure(EntityTypeBuilder<TeamTournament> builder)
     {
+        // Composite Primary Key
+        builder.HasKey(t => new { t.TeamId, t.TournamentId });
+        
         // Relationship to Team
         builder.HasOne(tt => tt.Team)
             .WithMany(t => t.TeamTournaments)
