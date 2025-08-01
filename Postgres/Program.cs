@@ -16,6 +16,7 @@ if(builder.Environment.IsDevelopment()) builder.Services.AddSwaggerConfig();
 
 WebApplication app = builder.Build();
 #region Middleware
+await app.UseDbSeederAsync();
 if(app.Environment.IsDevelopment()) app.UseSwaggerConfig();
 #endregion
 

@@ -22,8 +22,9 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
             .HasForeignKey(t => t.CountryId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Navigation(c => c.Players).AutoInclude();
-        builder.Navigation(c => c.Teams).AutoInclude();
+        // Had to comment this because it was causing a circular reference error
+        //builder.Navigation(c => c.Players).AutoInclude();
+        //builder.Navigation(c => c.Teams).AutoInclude();
         
         builder.OwnsOne(c => c.AuditInfo, auditInfo =>
         {
